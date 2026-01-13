@@ -1,8 +1,9 @@
 import { Avatar, AvatarFallback } from '@/components/ui/Avatar'
 import { Link } from 'react-router'
-import { HiOutlineSearch, HiOutlinePhone, HiOutlineVideoCamera, HiOutlineDotsVertical } from 'react-icons/hi'
+import { HiOutlineSearch, HiOutlinePhone, HiOutlineVideoCamera } from 'react-icons/hi'
 import { FaArrowLeft } from 'react-icons/fa'
 import { HiUsers } from 'react-icons/hi2'
+import { ChatHeaderMenu } from '@/pages/chat/components/ChatHeaderMenu'
 import type { ChatRoomInfo } from '@/types/chat-room'
 
 type ChatHeaderProps = {
@@ -45,9 +46,7 @@ export function ChatHeader({ chatRoomInfo }: ChatHeaderProps) {
         <button className="text-gray-600">
           <HiOutlineVideoCamera className="w-5 h-5" />
         </button>
-        <button className="text-gray-600">
-          <HiOutlineDotsVertical className="w-5 h-5" />
-        </button>
+        <ChatHeaderMenu />
       </div>
     </div>
   )
