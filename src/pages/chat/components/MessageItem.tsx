@@ -32,7 +32,7 @@ export function MessageItem({ message, showSenderInfo, showTimeInfo }: MessageIt
       )}
       <div className={`flex flex-col gap-1 ${message.isMe ? 'items-end' : 'items-start'} max-w-[70%]`}>
         {showSenderInfo && !message.isMe && (
-          <span className="text-xs text-gray-500 px-1">{message.sender}</span>
+          <span className="text-xs text-black px-1">{message.sender}</span>
         )}
         <div
           className={`rounded-lg px-3 py-2 ${
@@ -48,7 +48,7 @@ export function MessageItem({ message, showSenderInfo, showTimeInfo }: MessageIt
         </div>
         {showTimeInfo && (
           <div className="flex items-center gap-1 px-1">
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-black">
               {message.time.format('A h:mm')}
             </span>
           </div>

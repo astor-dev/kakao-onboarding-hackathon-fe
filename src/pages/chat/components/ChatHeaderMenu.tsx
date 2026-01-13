@@ -20,8 +20,8 @@ export function ChatHeaderMenu({ onOpenDrawer }: ChatHeaderMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button className="text-gray-600 bg-white">
-          <HiOutlineDotsVertical className="w-5 h-5 bg-white" />
+        <button className="text-gray-600">
+          <HiOutlineDotsVertical className="w-5 h-5" />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">

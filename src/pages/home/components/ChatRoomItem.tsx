@@ -14,7 +14,7 @@ export function ChatRoomItem({ room }: ChatRoomItemProps) {
   return (
     <Link
       to={`/chat/${room.id}`}
-      className="flex w-full min-w-0 box-border items-center gap-3 px-4 py-3 hover:bg-chat-list-item-hover border-b border-chat-list-border cursor-pointer text-chat-text-primary hover:text-chat-text-primary no-underline"
+      className="flex w-full min-w-0 items-center gap-3 px-4 py-3 hover:bg-chat-list-item-hover cursor-pointer text-chat-text-primary hover:text-chat-text-primary no-underline"
     >
       <div className="relative">
         <Avatar className="w-12 h-12">

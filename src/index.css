@@ -133,6 +133,7 @@ button:focus-visible {
   /* 카카오톡 색상 - Tailwind 유틸리티로 사용 가능 */
   --color-kakao-yellow: #FEE500;
   --color-kakao-black: #000000;
+  --color-kakao-blue: #ABC1D1;
   --color-chat-bg: #F5F5F5;
   --color-chat-bubble-other: #FFFFFF;
   --color-chat-bubble-me: #FEE500;

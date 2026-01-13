@@ -18,13 +18,13 @@ export function ChatHeader({ chatRoom }: ChatHeaderProps) {
 
   return (
     <>
-      <div className="h-14 bg-white flex items-center justify-between px-4 border-b border-gray-200">
+      <div className="h-14 bg-kakao-blue flex items-center justify-between px-4">
         <div className="flex items-center gap-3">
           <Link to="/" className="text-gray-600">
             <FaArrowLeft className="w-5 h-5" />
           </Link>
           <div className="flex items-center gap-2">
-            <Avatar className="w-8 h-8 border-2 border-white">
+            <Avatar className="w-8 h-8">
               <AvatarFallback
                 className="text-xs"
                 style={{ backgroundColor: getPastelColor(chatRoom.name) }}
@@ -43,22 +43,22 @@ export function ChatHeader({ chatRoom }: ChatHeaderProps) {
         </div>
         <div className="flex items-center gap-3">
           <button className="text-gray-600">
-            <HiOutlineSearch className="w-5 h-5 bg-white" />
+            <HiOutlineSearch className="w-5 h-5" />
           </button>
           {chatRoom.isSelfChat ? (
             <button 
               className="text-gray-600"
               onClick={() => setDrawerOpen(true)}
             >
-              <HiOutlineCloud className="w-5 h-5 bg-white" />
+              <HiOutlineCloud className="w-5 h-5" />
             </button>
           ) : (
             <>
               <button className="text-gray-600">
-                <HiOutlinePhone className="w-5 h-5 bg-white" />
+                <HiOutlinePhone className="w-5 h-5" />
               </button>
               <button className="text-gray-600">
-                <HiOutlineVideoCamera className="w-5 h-5 bg-white" />
+                <HiOutlineVideoCamera className="w-5 h-5" />
               </button>
             </>
           )}
