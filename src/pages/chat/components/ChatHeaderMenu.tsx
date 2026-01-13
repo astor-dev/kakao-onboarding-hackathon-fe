@@ -7,9 +7,6 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
 } from '@/components/ui/DropdownMenu'
 import { HiOutlineDotsVertical } from 'react-icons/hi'
 
@@ -34,16 +31,9 @@ export function ChatHeaderMenu({ onOpenDrawer }: ChatHeaderMenuProps) {
         </DropdownMenuItem>
         <DropdownMenuItem>채팅방 다시 만들기</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuSub>
-          <DropdownMenuSubTrigger onClick={onOpenDrawer}>
-            채팅방 서랍
-          </DropdownMenuSubTrigger>
-          <DropdownMenuSubContent>
-            <DropdownMenuItem onClick={onOpenDrawer}>사진/동영상</DropdownMenuItem>
-            <DropdownMenuItem onClick={onOpenDrawer}>파일</DropdownMenuItem>
-            <DropdownMenuItem onClick={onOpenDrawer}>링크</DropdownMenuItem>
-          </DropdownMenuSubContent>
-        </DropdownMenuSub>
+        <DropdownMenuItem onClick={onOpenDrawer}>
+          채팅방 서랍
+        </DropdownMenuItem>
         <DropdownMenuItem>톡게시판</DropdownMenuItem>
         <DropdownMenuItem>브리핑 보드</DropdownMenuItem>
         <DropdownMenuSeparator />

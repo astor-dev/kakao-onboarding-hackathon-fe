@@ -1,6 +1,5 @@
 import type { Message } from '@/types/chat-room'
 import { MessageItem } from '@/pages/chat/components/MessageItem'
-import dayjs from '@/lib/dayjs'
 
 type MessageListProps = {
   messages: Message[]
