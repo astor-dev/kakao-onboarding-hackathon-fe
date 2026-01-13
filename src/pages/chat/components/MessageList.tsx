@@ -1,5 +1,6 @@
 import type { Message } from '@/types/chat-room'
 import { MessageItem } from '@/pages/chat/components/MessageItem'
+import dayjs from '@/lib/dayjs'
 
 type MessageListProps = {
   messages: Message[]
@@ -16,7 +17,7 @@ export function MessageList({ messages }: MessageListProps) {
         const showTimeInfo = !(
           nextMessage &&
           nextMessage.sender === message.sender &&
-          nextMessage.time === message.time
+          nextMessage.time.format('A h:mm') === message.time.format('A h:mm')
         )
         
         return (

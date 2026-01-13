@@ -1,8 +1,10 @@
+import type { Dayjs } from 'dayjs'
+
 export type ChatRoom = {
   id: string
   name: string
   lastMessage: string
-  time: string
+  time: Dayjs
   avatar: string | null
   memberCount?: number
   isPinned?: boolean
@@ -14,7 +16,7 @@ export type Message = {
   roomId: string
   sender: string
   content: string
-  time: string
+  time: Dayjs
   isMe: boolean
   avatar: string | null
 }

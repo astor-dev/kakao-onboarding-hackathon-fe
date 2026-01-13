@@ -1,11 +1,14 @@
 import type { ChatRoom, Message } from "@/types/chat-room"
+import dayjs from '@/lib/dayjs'
+
+const BASE_TIME = dayjs('2026-01-01 15:41')
 
 export const chatRooms: ChatRoom[] = [
     {
       id: '1',
       name: '김도훈',
       lastMessage: '톡서랍을 제외한 다른 데이터/UI는 카카오톡 PC 버전을 가상으로 흉내낸 것으로 실제로 동작하지 않습니다.',
-      time: '오후 3:41',
+      time: BASE_TIME,
       avatar: null,
       isSelfChat: true,
     },
@@ -13,7 +16,7 @@ export const chatRooms: ChatRoom[] = [
       id: '2',
       name: '2026 그룹공채 원 카카오 온보딩',
       lastMessage: '여러분~~~~ 내일 아침 10시, CEO와의 만남 시간에는...',
-      time: '오후 1:18',
+      time: BASE_TIME.subtract(2, 'hour').subtract(23, 'minute'), // 오후 1:18
       avatar: null,
       memberCount: 144,
     },
@@ -21,7 +24,7 @@ export const chatRooms: ChatRoom[] = [
       id: '3',
       name: '동기사랑 6조',
       lastMessage: 'Same here too',
-      time: '오후 1:10',
+      time: BASE_TIME.subtract(2, 'hour').subtract(31, 'minute'), // 오후 1:10
       avatar: null,
       memberCount: 8,
     },
@@ -29,7 +32,7 @@ export const chatRooms: ChatRoom[] = [
       id: '4',
       name: '페둥이들',
       lastMessage: 'ㄷㄷㄷ저희도 얼떨떨해요',
-      time: '오후 12:33',
+      time: BASE_TIME.subtract(3, 'hour').subtract(8, 'minute'), // 오후 12:33
       avatar: null,
       memberCount: 13,
     },
@@ -37,7 +40,7 @@ export const chatRooms: ChatRoom[] = [
       id: '5',
       name: '해커톤 22조',
       lastMessage: '#춘식도락메뉴 분석 챌린지 1. 2 번...',
-      time: '오후 12:23',
+      time: BASE_TIME.subtract(3, 'hour').subtract(18, 'minute'), // 오후 12:23
       avatar: null,
       memberCount: 4,
     },
@@ -49,7 +52,7 @@ export const chatMessages: Message[] = [
       roomId: '1',
       sender: '김도훈',
       content: '테스트',
-      time: '오후 3:41',
+      time: BASE_TIME,
       isMe: true,
       avatar: null,
     },
@@ -58,7 +61,7 @@ export const chatMessages: Message[] = [
       roomId: '2',
       sender: 'olive',
       content: '여러분~~~~ 내일 아침 10시, CEO와의 만남 시간에는...',
-      time: '오후 1:18',
+      time: BASE_TIME.subtract(2, 'hour').subtract(23, 'minute'), // 오후 1:18
       isMe: false,
       avatar: null,
     },  
@@ -67,7 +70,7 @@ export const chatMessages: Message[] = [
       roomId: '3',
       sender: '카카오게임즈 james(한승준)',
       content: '식사 순서에 따라 다르지 않을까요?',
-      time: '오후 12:45',
+      time: BASE_TIME.subtract(2, 'hour').subtract(56, 'minute'), // 오후 12:45
       isMe: false,
       avatar: null,
     },
@@ -76,7 +79,7 @@ export const chatMessages: Message[] = [
       roomId: '3',
       sender: '카카오게임즈 james(한승준)',
       content: '여쭤보기가',
-      time: '오후 12:55',
+      time: BASE_TIME.subtract(2, 'hour').subtract(46, 'minute'), // 오후 12:55
       isMe: false,
       avatar: null,
     },
@@ -85,7 +88,7 @@ export const chatMessages: Message[] = [
       roomId: '3',
       sender: '카카오게임즈 james(한승준)',
       content: '애매한디요',
-      time: '오후 1:08',
+      time: BASE_TIME.subtract(2, 'hour').subtract(33, 'minute'), // 오후 1:08
       isMe: false,
       avatar: null,
     },
@@ -94,7 +97,7 @@ export const chatMessages: Message[] = [
       roomId: '3',
       sender: '카카오페이 astor(김도훈)',
       content: '저희는 해커톤조끼리 먹어요',
-      time: '오후 1:09',
+      time: BASE_TIME.subtract(2, 'hour').subtract(32, 'minute'), // 오후 1:09
       isMe: true,
       avatar: null,
     },
@@ -103,7 +106,7 @@ export const chatMessages: Message[] = [
       roomId: '3',
       sender: '카카오게임즈 james(한승준)',
       content: 'Same here',
-      time: '오후 1:10',
+      time: BASE_TIME.subtract(2, 'hour').subtract(31, 'minute'), // 오후 1:10
       isMe: false,
       avatar: null,
     },
@@ -112,7 +115,7 @@ export const chatMessages: Message[] = [
       roomId: '3',
       sender: '카카오게임즈 james(한승준)',
       content: 'Same here too',
-      time: '오후 1:10',
+      time: BASE_TIME.subtract(2, 'hour').subtract(31, 'minute'), // 오후 1:10
       isMe: false,
       avatar: null,
     },
@@ -121,7 +124,7 @@ export const chatMessages: Message[] = [
       roomId: '4',
       sender: '페둥이들',
       content: 'ㄷㄷㄷ저희도 얼떨떨해요',
-      time: '오후 12:33',
+      time: BASE_TIME.subtract(3, 'hour').subtract(8, 'minute'), // 오후 12:33
       isMe: false,
       avatar: null,
     },
@@ -130,7 +133,7 @@ export const chatMessages: Message[] = [
       roomId: '5',
       sender: '해커톤 22조',
       content: '#춘식도락메뉴 분석 챌린지 1. 2 번...',
-      time: '오후 12:23',
+      time: BASE_TIME.subtract(3, 'hour').subtract(18, 'minute'), // 오후 12:23
       isMe: false,
       avatar: null,
     },
@@ -139,7 +142,7 @@ export const chatMessages: Message[] = [
       roomId: '1',
       sender: '김도훈',
       content: '톡서랍을 제외한 다른 데이터/UI는 카카오톡 PC 버전을 가상으로 흉내낸 것으로 실제로 동작하지 않습니다.',
-      time: '오후 3:41',
+      time: BASE_TIME,
       isMe: true,
       avatar: null,
     },

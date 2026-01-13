@@ -44,7 +44,9 @@ export function MessageItem({ message, showSenderInfo, showTimeInfo }: MessageIt
         </div>
         {showTimeInfo && (
           <div className="flex items-center gap-1 px-1">
-            <span className="text-xs text-gray-400">{message.time}</span>
+            <span className="text-xs text-gray-400">
+              {message.time.format('A h:mm')}
+            </span>
           </div>
         )}
       </div>

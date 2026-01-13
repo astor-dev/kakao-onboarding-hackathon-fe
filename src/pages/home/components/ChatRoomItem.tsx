@@ -39,7 +39,9 @@ export function ChatRoomItem({ room }: ChatRoomItemProps) {
         <p className="text-sm text-gray-600 truncate">{room.lastMessage}</p>
       </div>
       <div className="flex flex-col items-end gap-1">
-        <span className="text-xs text-gray-500">{room.time}</span>
+        <span className="text-xs text-gray-500">
+          {room.time.format('A h:mm')}
+        </span>
       </div>
     </Link>
   )
