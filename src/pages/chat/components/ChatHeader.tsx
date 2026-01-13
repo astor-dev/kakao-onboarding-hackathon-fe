@@ -5,7 +5,7 @@ import { HiOutlineSearch, HiOutlinePhone, HiOutlineVideoCamera, HiOutlineCloud }
 import { FaArrowLeft } from 'react-icons/fa'
 import { HiUsers } from 'react-icons/hi2'
 import { ChatHeaderMenu } from '@/pages/chat/components/ChatHeaderMenu'
-import { TalkDrawer } from '@/pages/chat/drawer/components/TalkDrawer'
+import { TalkDrawer } from '@/pages/chat/drawer/TalkDrawer'
 import type { ChatRoom } from '@/types/chat-room'
 
 type ChatHeaderProps = {
