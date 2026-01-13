@@ -13,12 +13,19 @@ export function ChatRoomItem({ room }: ChatRoomItemProps) {
       to={`/chat/${room.id}`}
       className="flex w-full min-w-0 box-border items-center gap-3 px-4 py-3 hover:bg-chat-list-item-hover border-b border-chat-list-border cursor-pointer text-chat-text-primary hover:text-chat-text-primary no-underline"
     >
-      <Avatar className="w-12 h-12">
-        <AvatarImage src={room.avatar || undefined} />
-        <AvatarFallback className="bg-gray-200 text-chat-text-primary">
-          {room.name.charAt(0)}
-        </AvatarFallback>
-      </Avatar>
+      <div className="relative">
+        <Avatar className="w-12 h-12">
+          <AvatarImage src={room.avatar || undefined} />
+          <AvatarFallback className="bg-gray-200 text-chat-text-primary">
+            {room.name.charAt(0)}
+          </AvatarFallback>
+        </Avatar>
+        {room.isSelfChat && (
+          <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-gray-600 flex items-center justify-center">
+            <span className="text-white text-[10px] font-medium">나</span>
+          </div>
+        )}
+      </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1">
           <span className="font-medium text-sm truncate">{room.name}</span>

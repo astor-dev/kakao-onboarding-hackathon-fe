@@ -6,6 +6,7 @@ export type ChatRoom = {
   avatar: string | null
   memberCount?: number
   isPinned?: boolean
+  isSelfChat?: boolean
 }
 
 export type Message = {

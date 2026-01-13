@@ -2,6 +2,14 @@ import type { ChatRoom, Message } from "@/types/chat-room"
 
 export const chatRooms: ChatRoom[] = [
     {
+      id: '1',
+      name: '김도훈',
+      lastMessage: '테스트',
+      time: '오후 3:41',
+      avatar: null,
+      isSelfChat: true,
+    },
+    {
       id: '2',
       name: '2026 그룹공채 원 카카오 온보딩',
       lastMessage: '여러분~~~~ 내일 아침 10시, CEO와의 만남 시간에는...',
@@ -38,6 +46,15 @@ export const chatRooms: ChatRoom[] = [
 export const chatMessages: Message[] = [
     {
       id: '1',
+      roomId: '1',
+      sender: '김도훈',
+      content: '테스트',
+      time: '오후 3:41',
+      isMe: true,
+      avatar: null,
+    },
+    {
+      id: '2',
       roomId: '2',
       sender: 'olive',
       content: '여러분~~~~ 내일 아침 10시, CEO와의 만남 시간에는...',
@@ -46,7 +63,7 @@ export const chatMessages: Message[] = [
       avatar: null,
     },  
     {
-      id: '2',
+      id: '3',
       roomId: '3',
       sender: '카카오게임즈 james(한승준)',
       content: '식사 순서에 따라 다르지 않을까요?',
@@ -55,7 +72,7 @@ export const chatMessages: Message[] = [
       avatar: null,
     },
     {
-      id: '3',
+      id: '4',
       roomId: '3',
       sender: '카카오게임즈 james(한승준)',
       content: '여쭤보기가',
@@ -64,7 +81,7 @@ export const chatMessages: Message[] = [
       avatar: null,
     },
     {
-      id: '4',
+      id: '5',
       roomId: '3',
       sender: '카카오게임즈 james(한승준)',
       content: '애매한디요',
@@ -73,7 +90,7 @@ export const chatMessages: Message[] = [
       avatar: null,
     },
     {
-      id: '5',
+      id: '6',
       roomId: '3',
       sender: '카카오페이 astor(김도훈)',
       content: '저희는 해커톤조끼리 먹어요',
@@ -82,7 +99,7 @@ export const chatMessages: Message[] = [
       avatar: null,
     },
     {
-      id: '6',
+      id: '7',
       roomId: '3',
       sender: '카카오게임즈 james(한승준)',
       content: 'Same here',
@@ -91,7 +108,7 @@ export const chatMessages: Message[] = [
       avatar: null,
     },
     {
-      id: '7',
+      id: '8',
       roomId: '3',
       sender: '카카오게임즈 james(한승준)',
       content: 'Same here too',
@@ -100,7 +117,7 @@ export const chatMessages: Message[] = [
       avatar: null,
     },
     {
-      id: '8',
+      id: '9',
       roomId: '4',
       sender: '페둥이들',
       content: 'ㄷㄷㄷ저희도 얼떨떨해요',
@@ -109,7 +126,7 @@ export const chatMessages: Message[] = [
       avatar: null,
     },
     {
-      id: '9',
+      id: '10',
       roomId: '5',
       sender: '해커톤 22조',
       content: '#춘식도락메뉴 분석 챌린지 1. 2 번...',

@@ -18,21 +18,17 @@ export function ChatHeader({ chatRoomInfo }: ChatHeaderProps) {
           <FaArrowLeft className="w-5 h-5" />
         </Link>
         <div className="flex items-center gap-2">
-          <div className="flex -space-x-2">
-            {[1, 2, 3, 4].map((i) => (
-              <Avatar key={i} className="w-8 h-8 border-2 border-white">
-                <AvatarFallback className="bg-blue-200 text-xs">
-                  {i}
-                </AvatarFallback>
-              </Avatar>
-            ))}
-          </div>
+          <Avatar className="w-8 h-8 border-2 border-white">
+            <AvatarFallback className="bg-blue-200 text-xs">
+              {chatRoomInfo.name.charAt(0)}
+            </AvatarFallback>
+          </Avatar>
           <div>
             <h2 className="font-semibold text-sm line-clamp-1">{chatRoomInfo.name}</h2>
-            <div className="flex items-center gap-1 text-xs text-gray-500">
+            {chatRoomInfo.memberCount > 1 && <div className="flex items-center gap-1 text-xs text-gray-500">
               <HiUsers className="w-3 h-3" />
               <span>{chatRoomInfo.memberCount}</span>
-            </div>
+            </div>}
           </div>
         </div>
       </div>
