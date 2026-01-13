@@ -3,8 +3,7 @@ import {
   HiPhoto,
   HiOutlineDocument,
   HiOutlineLink,
-  HiOutlineSpeakerWave,
-  HiEllipsisHorizontalCircle,
+  HiOutlineSpeakerWave
 } from 'react-icons/hi2'
 
 export function DrawerTabs() {
@@ -37,13 +36,6 @@ export function DrawerTabs() {
       >
         <HiOutlineSpeakerWave className="w-5 h-5" />
         <span>음성</span>
-      </TabsTrigger>
-      <TabsTrigger
-        value="more"
-        className="rounded-none border-b-2 border-transparent data-[state=active]:border-black data-[state=active]:bg-transparent data-[state=active]:shadow-none px-4 py-3"
-        disabled
-      >
-        <HiEllipsisHorizontalCircle className="w-5 h-5 text-gray-400" />
       </TabsTrigger>
     </TabsList>
   )

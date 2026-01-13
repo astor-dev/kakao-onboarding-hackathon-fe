@@ -7,6 +7,7 @@ import { HiUsers } from 'react-icons/hi2'
 import { ChatHeaderMenu } from '@/pages/chat/components/ChatHeaderMenu'
 import { TalkDrawer } from '@/pages/chat/drawer/TalkDrawer'
 import type { ChatRoom } from '@/types/chat-room'
+import { getPastelColor } from '@/lib/background'
 
 type ChatHeaderProps = {
   chatRoom: ChatRoom
@@ -24,7 +25,10 @@ export function ChatHeader({ chatRoom }: ChatHeaderProps) {
           </Link>
           <div className="flex items-center gap-2">
             <Avatar className="w-8 h-8 border-2 border-white">
-              <AvatarFallback className="bg-blue-200 text-xs">
+              <AvatarFallback
+                className="text-xs"
+                style={{ backgroundColor: getPastelColor(chatRoom.name) }}
+              >
                 {chatRoom.name.charAt(0)}
               </AvatarFallback>
             </Avatar>

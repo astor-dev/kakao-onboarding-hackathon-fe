@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
+import { getPastelColor } from '@/lib/background'
 import type { Message } from '@/types/chat-room'
 
 type MessageItemProps = {
@@ -16,7 +17,10 @@ export function MessageItem({ message, showSenderInfo, showTimeInfo }: MessageIt
             <>
               <Avatar className="w-8 h-8">
                 <AvatarImage src={message.avatar || undefined} />
-                <AvatarFallback className="bg-blue-200 text-xs">
+                <AvatarFallback
+                  className="text-xs"
+                  style={{ backgroundColor: getPastelColor(message.sender) }}
+                >
                   {message.sender.charAt(0)}
                 </AvatarFallback>
               </Avatar>

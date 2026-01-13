@@ -2,12 +2,15 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
 import { Link } from 'react-router'
 import { RiPushpinLine } from 'react-icons/ri'
 import type { ChatRoom } from '@/types/chat-room'
+import { getPastelColor } from '@/lib/background'
 
 type ChatRoomItemProps = {
   room: ChatRoom
 }
 
 export function ChatRoomItem({ room }: ChatRoomItemProps) {
+  const backgroundColor = getPastelColor(room.name)
+
   return (
     <Link
       to={`/chat/${room.id}`}
@@ -16,7 +19,10 @@ export function ChatRoomItem({ room }: ChatRoomItemProps) {
       <div className="relative">
         <Avatar className="w-12 h-12">
           <AvatarImage src={room.avatar || undefined} />
-          <AvatarFallback className="bg-gray-200 text-chat-text-primary">
+          <AvatarFallback
+            className="text-chat-text-primary"
+            style={{ backgroundColor }}
+          >
             {room.name.charAt(0)}
           </AvatarFallback>
         </Avatar>
