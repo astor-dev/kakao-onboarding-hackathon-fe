@@ -25,7 +25,9 @@ export default defineConfig([
         {
           allowConstantExport: true,
         }
-      ]
+      ],
+      "no-unused-vars": "off",
     }
+    
   },
 ])

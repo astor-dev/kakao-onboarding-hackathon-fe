@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import type { Message } from '@/types/chat-room'
 import { MessageItem } from '@/pages/chat/components/MessageItem'
 
@@ -6,8 +7,17 @@ type MessageListProps = {
 }
 
 export function MessageList({ messages }: MessageListProps) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  // 메시지가 추가될 때마다 스크롤을 최하단으로 이동
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    }
+  }, [messages])
+
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
+    <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-4">
       {messages.map((message, index) => {
         const showSenderInfo = index === 0 || messages[index - 1].sender !== message.sender
         
