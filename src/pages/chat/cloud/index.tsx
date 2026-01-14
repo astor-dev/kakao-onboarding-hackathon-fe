@@ -69,7 +69,7 @@ export function TalkDrawer() {
         </div>
 
         {/* 메인 탭 및 컨텐츠 */}
-        <Tabs value={selectedTab} onValueChange={handleTabChange} className="flex-1 flex flex-col min-h-0">
+        <Tabs value={selectedTab} onValueChange={handleTabChange} className="flex-1 flex flex-col min-h-0 mb-4">
           <MainTabs value={selectedTab} onValueChange={handleTabChange} />
           
           <div className="flex-1 flex flex-col min-h-0">

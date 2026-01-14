@@ -4,6 +4,7 @@ import { ErrorPage } from "@/pages/ErrorPage";
 import { Home } from "@/pages/home";
 import { ChatRoom } from "@/pages/chat";
 import { TalkDrawer } from "@/pages/chat/cloud";
+import { CategoryPage } from "@/pages/chat/cloud/category";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter(
@@ -27,6 +28,10 @@ export const router = createBrowserRouter(
             {
               path: '/chat/:id/cloud',
               element: <TalkDrawer />,
+            },
+            {
+              path: '/chat/:id/cloud/category/:categoryId',
+              element: <CategoryPage />,
             },
           ],
         },

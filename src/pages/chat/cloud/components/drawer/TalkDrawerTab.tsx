@@ -3,11 +3,14 @@ import { ALL_CATEGORIES } from '@/constants/categories'
 import { CategoryItem } from '@/pages/chat/cloud/components/drawer/CategoryItem'
 import { RecommendedCategoryCarousel } from '@/pages/chat/cloud/components/drawer/RecommendedCategoryCarousel'
 import { IoSparkles } from 'react-icons/io5'
+import { useNavigate, useParams } from 'react-router'
 
 export function TalkDrawerTab() {
+  const navigate = useNavigate()
+  const { id } = useParams<{ id: string }>()
+
   const handleCategoryClick = (categoryId: string) => {
-    // TODO: 카테고리별 파일 목록 페이지로 이동
-    console.log('Category clicked:', categoryId)
+    navigate(`/chat/${id}/cloud/category/${categoryId}`)
   }
 
   return (

@@ -10,7 +10,7 @@ export function RecommendedCategoryCard({ category, onClick }: RecommendedCatego
   const Icon = category.icon
 
   return (
-    <div
+    <button
       onClick={onClick}
       className="shrink-0 p-2 flex flex-col items-center gap-3 cursor-pointer group"
     >
@@ -23,6 +23,6 @@ export function RecommendedCategoryCard({ category, onClick }: RecommendedCatego
       <div className="text-center">
         <p className="text-sm font-medium text-gray-900 line-clamp-2">{category.label}</p>
       </div>
-    </div>
+    </button>
   )
 }

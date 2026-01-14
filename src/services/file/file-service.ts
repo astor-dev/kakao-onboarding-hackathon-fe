@@ -64,3 +64,7 @@ export async function uploadFiles(files: File[], roomId?: string): Promise<Uploa
   const uploadPromises = files.map(file => uploadFile({ file, roomId }))
   return Promise.all(uploadPromises)
 }
+
+export async function getFile(fileId: string): Promise<File | undefined> {
+  return undefined
+}
