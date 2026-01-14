@@ -17,6 +17,7 @@ export function ChatRoom() {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([])
   const [isFileModalOpen, setIsFileModalOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (!id) return
@@ -134,7 +135,20 @@ export function ChatRoom() {
   const handleFileSend = useCallback(() => {
     // TODO: 실제 파일 업로드 로직 구현
     handleFileModalClose()
-  }, [selectedFiles, handleFileModalClose])
+  }, [handleFileModalClose])
+
+  const handlePlusClick = () => {
+    fileInputRef.current?.click()
+  }
+
+  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (files && files.length > 0) {
+      handleFiles(files)
+      // input 초기화 (같은 파일 재선택 가능하게)
+      e.target.value = ''
+    }
+  }
 
   if (!id || !chatRoom) {
     return null
@@ -149,11 +163,22 @@ export function ChatRoom() {
         onDrop={handleDrop}
         tabIndex={-1}
       >
-        <div className="flex-1 flex flex-col overflow-hidden pb-[69px]">
-          <ChatHeader chatRoom={chatRoom} />
-          <MessageList messages={messages} />
-        </div>
-        <MessageInput onSend={handleSendMessage} />
+            <div className="flex-1 flex flex-col overflow-hidden pb-[69px]">
+              <ChatHeader chatRoom={chatRoom} />
+              <MessageList messages={messages} />
+            </div>
+            
+            {/* 숨겨진 파일 input */}
+            <input
+              ref={fileInputRef}
+              type="file"
+              multiple
+              accept="*/*"
+              onChange={handleFileInputChange}
+              className="hidden"
+            />
+            
+            <MessageInput onSend={handleSendMessage} onPlusClick={handlePlusClick} />
       </div>
 
       {/* 파일 전송 모달 */}

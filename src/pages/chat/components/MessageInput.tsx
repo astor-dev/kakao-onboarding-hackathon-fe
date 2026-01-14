@@ -7,10 +7,11 @@ import { cn } from '@/lib/utils'
 
 type MessageInputProps = {
   onSend?: (content: string) => void | Promise<void>
+  onPlusClick?: () => void
   disabled?: boolean
 }
 
-export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
+export function MessageInput({ onSend, onPlusClick, disabled = false }: MessageInputProps) {
   const [message, setMessage] = useState('')
   const [isFocused, setIsFocused] = useState(false)
   const [isSending, setIsSending] = useState(false)
@@ -68,7 +69,7 @@ export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
   return (
     <div className={cn(bottomFixedContainer, "bg-white border-t border-gray-200 p-4 z-50")}>
       <div className="flex items-end gap-2">
-        <button className="text-gray-600 p-2">
+        <button onClick={onPlusClick} className="text-gray-600 p-2">
           <HiOutlinePlus className="w-5 h-5" />
         </button>
         <div className="flex-1 transition-all duration-150 relative">
