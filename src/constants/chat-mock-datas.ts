@@ -192,4 +192,18 @@ export const chatMessages: Message[] = [
       type: 'text',
       avatar: null,
     },
-]
+    {
+      id: '13',
+      roomId: '1',
+      sender: 'astor.star',
+      content: `🚨🚨🚨 잠시만요! 🚨🚨🚨
+      
+프로토타입이라 로그인 기능이 없어요.
+파일을 올리면 모든 유저가 같이 보게 되니, 민감한 파일은 올리지 않도록 주의해 주세요!
+`,
+      time: BASE_TIME.add(1, 'hour'),
+      isMe: true,
+      type: 'text',
+      avatar: null,
+    },
+  ]
