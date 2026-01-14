@@ -30,7 +30,7 @@ export function MessageItem({ message, showSenderInfo, showTimeInfo }: MessageIt
           )}
         </div>
       )}
-      <div className={`flex flex-col gap-1 ${message.isMe ? 'items-end' : 'items-start'} max-w-[70%]`}>
+      <div className={`flex flex-col gap-1 ${message.isMe ? 'items-end' : 'items-start'} max-w-[80%]`}>
         {showSenderInfo && !message.isMe && (
           <span className="text-xs text-black px-1">{message.sender}</span>
         )}
