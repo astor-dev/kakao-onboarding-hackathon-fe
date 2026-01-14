@@ -50,6 +50,8 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 }
+
+
 /* 
 a {
   font-weight: 500;
@@ -189,5 +191,16 @@ button:focus-visible {
   }
   ul, ol {
     @apply list-none;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  ::-webkit-scrollbar-track:hover {
+    background-color: transparent !important;
+    box-shadow: none !important;
   }
 }

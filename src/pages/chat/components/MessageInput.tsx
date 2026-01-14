@@ -15,6 +15,8 @@ export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
   const [isFocused, setIsFocused] = useState(false)
   const [isSending, setIsSending] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const lastSendTimeRef = useRef<number>(0)
+  const isComposingRef = useRef<boolean>(false)
 
   const hasMessage = message.trim().length > 0
   const showVoicePrint = !isFocused && !hasMessage
@@ -22,29 +24,45 @@ export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
 
   const handleSend = async () => {
     const trimmedMessage = message.trim()
-    if (!trimmedMessage || isSending || disabled || !onSend) return
+    if (!trimmedMessage || disabled || !onSend) return
 
+    const now = Date.now()
+    const timeSinceLastSend = now - lastSendTimeRef.current
+    
+    if (isSending || timeSinceLastSend < 200) {
+      return
+    }
+
+    lastSendTimeRef.current = now
     setIsSending(true)
+    setMessage('')
+    
     try {
       await onSend(trimmedMessage)
-      setMessage('')
-      // 전송 후 입력창에 다시 포커스
+    } catch (error) {
+      console.error('메시지 전송 실패:', error)
+      setMessage(trimmedMessage)
+    } finally {
+      setIsSending(false)
       setTimeout(() => {
         inputRef.current?.focus()
       }, 0)
-    } catch (error) {
-      console.error('메시지 전송 실패:', error)
-      // 에러 처리 (예: 토스트 메시지 표시)
-    } finally {
-      setIsSending(false)
     }
   }
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey && !isComposingRef.current) {
       e.preventDefault()
       handleSend()
     }
+  }
+
+  const handleCompositionStart = () => {
+    isComposingRef.current = true
+  }
+
+  const handleCompositionEnd = () => {
+    isComposingRef.current = false
   }
 
   return (
@@ -57,12 +75,14 @@ export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
           <Input
             ref={inputRef}
             placeholder="메시지 입력"
-            className="rounded-full border-gray-300 focus:border-gray-400 transition-all duration-150 pr-12"
+            className="rounded-full border-gray-300 focus:border-gray-400 transition-all duration-150 pr-12 focus-visible:ring-0"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             onKeyDown={handleKeyPress}
+            onCompositionStart={handleCompositionStart}
+            onCompositionEnd={handleCompositionEnd}
             disabled={disabled || isSending}
           />
           <button className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600 p-1 bg-gray-100 rounded-full">
