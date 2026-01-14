@@ -1,20 +1,12 @@
-import type { ComponentType } from 'react'
+export type MainTab = 'drawer' | 'explore'
 
-export type TalkDrawerTab = 'photo' | 'document' | 'link' | 'voice'
+export type FilterType = 'all' | 'media' | 'link' | 'file'
 
-export type Filter = {
-  id: string
-  label: string
-  count: number
-  icon: ComponentType<{ className?: string }>
-  active?: boolean
-}
-
-export type FileItem = {
+export type ExploreItem = {
   id: string
   name: string
-  type: 'image' | 'document' | 'link' | 'voice'
+  type: FilterType
+  thumbnail?: string
   size?: string
-  expiryDate?: string
-  tags: string[]
+  date?: string
 }
