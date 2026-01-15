@@ -9,7 +9,7 @@ export function mapFileResponseToFileItem(response: FileResponse): FileItem {
   return {
     id: response.id,
     fileOverview: response.fileOverview,
-    fileType: mapBackendFileTypeToFrontend(response.fileType),
+    fileType: mapBackendFileTypeToFrontend(response.fileType as FileType | null | undefined),
     originalFileName: response.originalFileName,
     savedFileName: response.savedFileName,
     tags: response.tags.map(tag => ({
@@ -35,25 +35,9 @@ export function mapFileResponsesToFileItems(responses: FileResponse[]): FileItem
  * 백엔드 파일 타입을 프론트엔드 FileType으로 매핑
  * TODO: 백엔드 enum과 맞추기
  */
-function mapBackendFileTypeToFrontend(backendType: string | null | undefined): FileType {
+function mapBackendFileTypeToFrontend(backendType: FileType | null | undefined): FileType {
   if (!backendType) {
-    return 'etc'
+    return 'ETC'
   }
-  
-  const normalizedType = backendType.toLowerCase()
-  
-  if (normalizedType.includes('image') || normalizedType.includes('photo')) {
-    return 'image'
-  }
-  if (normalizedType.includes('document') || normalizedType.includes('doc') || normalizedType.includes('pdf')) {
-    return 'document'
-  }
-  if (normalizedType.includes('link') || normalizedType.includes('url')) {
-    return 'link'
-  }
-  if (normalizedType.includes('text') || normalizedType.includes('txt')) {
-    return 'text'
-  }
-  
-  return 'etc'
+  return backendType
 }

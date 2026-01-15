@@ -44,7 +44,7 @@ export function ChatRoom() {
       time: dayjs(),
       isMe: true,
       avatar: null,
-      type: 'text',
+      type: 'TEXT',
     }
 
     setMessages((prev) => [...prev, optimisticMessage])
@@ -148,11 +148,11 @@ export function ChatRoom() {
       time: dayjs(),
       isMe: true,
       avatar: null,
-      type: 'document', // 임시, 실제로는 file type 판별
+      type: 'DOCUMENT', // 임시, 실제로는 file type 판별
       fileData: {
         fileName: file.name,
         fileSize: file.size,
-        fileType: file.type.startsWith('image/') ? 'image' : 'document',
+        fileType: file.type.startsWith('image/') ? 'IMAGE_VIDEO' : 'DOCUMENT',
         expiryDate: dayjs().add(1, 'month'), // 1개월 후 만료
         uploadStatus: 'pending',
       },

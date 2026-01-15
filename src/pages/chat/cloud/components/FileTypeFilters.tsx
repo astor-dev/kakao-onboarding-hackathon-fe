@@ -2,16 +2,16 @@ import type { FileType } from '@/types/file'
 import { Button } from '@/components/ui/Button'
 
 type FileTypeFiltersProps = {
-  selected: FileType | 'all' | 'media' | 'file'
-  onSelect: (filter: FileType | 'all' | 'media' | 'file') => void
+  selected: FileType | 'ALL'
+  onSelect: (filter: FileType | 'ALL') => void
 }
 
-const filters: { id: FileType | 'all' | 'media' | 'file'; label: string }[] = [
-  { id: 'all', label: '모두' },
-  { id: 'media', label: '사진/영상' },
-  { id: 'document', label: '문서' },
-  { id: 'link', label: '링크' },
-  { id: 'etc', label: '기타' },
+const filters: { id: FileType | 'ALL'; label: string }[] = [
+  { id: 'ALL', label: '모두' },
+  { id: 'IMAGE_VIDEO', label: '사진/영상' },
+  { id: 'DOCUMENT', label: '문서' },
+  { id: 'LINK', label: '링크' },
+  { id: 'ETC', label: '기타' },
 ]
 
 export function FileTypeFilters({ selected, onSelect }: FileTypeFiltersProps) {

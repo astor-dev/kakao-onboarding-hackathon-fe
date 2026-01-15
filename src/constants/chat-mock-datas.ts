@@ -79,7 +79,7 @@ export const chatMessages: Message[] = [
 톡서랍을 제외한 다른 데이터/UI는 카카오톡을 가상으로 흉내낸 것이며 실제로 동작하지 않아요`,
       time: BASE_TIME,
       isMe: false,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
     {
@@ -89,7 +89,7 @@ export const chatMessages: Message[] = [
       content: '여러분~~~~ 내일 아침 10시, CEO와의 만남 시간에는...',
       time: BASE_TIME.subtract(2, 'hour').subtract(23, 'minute'), // 오후 1:18
       isMe: false,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },  
     {
@@ -99,7 +99,7 @@ export const chatMessages: Message[] = [
       content: '식사 순서에 따라 다르지 않을까요?',
       time: BASE_TIME.subtract(2, 'hour').subtract(56, 'minute'), // 오후 12:45
       isMe: false,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
     {
@@ -109,7 +109,7 @@ export const chatMessages: Message[] = [
       content: '여쭤보기가',
       time: BASE_TIME.subtract(2, 'hour').subtract(46, 'minute'), // 오후 12:55
       isMe: false,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
     {
@@ -119,7 +119,7 @@ export const chatMessages: Message[] = [
       content: '애매한디요',
       time: BASE_TIME.subtract(2, 'hour').subtract(33, 'minute'), // 오후 1:08
       isMe: false,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
     {
@@ -129,7 +129,7 @@ export const chatMessages: Message[] = [
       content: '저희는 해커톤조끼리 먹어요',
       time: BASE_TIME.subtract(2, 'hour').subtract(32, 'minute'), // 오후 1:09
       isMe: true,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
     {
@@ -139,7 +139,7 @@ export const chatMessages: Message[] = [
       content: 'Same here',
       time: BASE_TIME.subtract(2, 'hour').subtract(31, 'minute'), // 오후 1:10
       isMe: false,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
     {
@@ -149,7 +149,7 @@ export const chatMessages: Message[] = [
       content: 'Same here too',
       time: BASE_TIME.subtract(2, 'hour').subtract(31, 'minute'), // 오후 1:10
       isMe: false,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
     {
@@ -159,7 +159,7 @@ export const chatMessages: Message[] = [
       content: 'ㄷㄷㄷ저희도 얼떨떨해요',
       time: BASE_TIME.subtract(3, 'hour').subtract(8, 'minute'), // 오후 12:33
       isMe: false,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
     {
@@ -170,7 +170,7 @@ export const chatMessages: Message[] = [
       time: BASE_TIME.subtract(3, 'hour').subtract(18, 'minute'), // 오후 12:23
       isMe: false,
       avatar: null,
-      type: 'text',
+      type: 'TEXT',
     },
     {
       id: '11',
@@ -179,7 +179,7 @@ export const chatMessages: Message[] = [
       content: '22조 화이팅~',
       time: BASE_TIME.add(1, 'hour'),
       isMe: true,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
     {
@@ -189,7 +189,7 @@ export const chatMessages: Message[] = [
       content: '나와의 채팅을 이용해주세요.',
       time: BASE_TIME,
       isMe: false,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
     {
@@ -203,7 +203,7 @@ export const chatMessages: Message[] = [
 `,
       time: BASE_TIME.add(1, 'hour'),
       isMe: true,
-      type: 'text',
+      type: 'TEXT',
       avatar: null,
     },
   ]

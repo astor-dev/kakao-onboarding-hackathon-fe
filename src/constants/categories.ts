@@ -34,32 +34,36 @@ export type Category = {
  * - 취미/여가: 요리(#66BB6A), 취미(#66BB6A)
  * - 기타: 기타(#BDBDBD)
  */
+
+/**
+ * HEALTH, PRIVACY, FINANCE, COUPON, TRAVEL, LIVING, PET, SHOPPING, JOB, COOKING, INSIGHT, HOBBY, STUDY, ETC
+ */
 export const ALL_CATEGORIES: Category[] = [
   // 개인/생활 그룹 (핑크 계열 - 더 쨍한 색)
-  { id: 'health', label: '건강', icon: HiHeart, color: '#FF6B9D' },
-  { id: 'personal', label: '개인정보', icon: HiShieldCheck, color: '#FF6B9D' },
-  { id: 'finance', label: '금융', icon: HiBanknotes, color: '#FF6B9D' },
+  { id: 'HEALTH', label: '건강', icon: HiHeart, color: '#FF6B9D' },
+  { id: 'PRIVACY', label: '개인정보', icon: HiShieldCheck, color: '#FF6B9D' },
+  { id: 'FINANCE', label: '금융', icon: HiBanknotes, color: '#FF6B9D' },
   
   // 쇼핑/혜택 그룹 (오렌지 계열 - 더 쨍한 색)
-  { id: 'coupon', label: '쿠폰', icon: HiTicket, color: '#FF7043' },
-  { id: 'shopping', label: '쇼핑', icon: HiShoppingBag, color: '#FF7043' },
+  { id: 'COUPON', label: '쿠폰', icon: HiTicket, color: '#FF7043' },
+  { id: 'SHOPPING', label: '쇼핑', icon: HiShoppingBag, color: '#FF7043' },
   
   // 라이프 그룹 (블루 계열 - 더 쨍한 색)
-  { id: 'travel', label: '여행', icon: HiGlobeAlt, color: '#42A5F5' },
-  { id: 'living', label: '리빙', icon: HiHome, color: '#42A5F5' },
-  { id: 'pet', label: '반려동물', icon: HiSparkles, color: '#42A5F5' },
+  { id: 'TRAVEL', label: '여행', icon: HiGlobeAlt, color: '#42A5F5' },
+  { id: 'LIVING', label: '리빙', icon: HiHome, color: '#42A5F5' },
+  { id: 'PET', label: '반려동물', icon: HiSparkles, color: '#42A5F5' },
   
   // 자기계발 그룹 (퍼플 계열 - 더 쨍한 색)
-  { id: 'work', label: '업무', icon: HiBriefcase, color: '#BA68C8' },
-  { id: 'study', label: '학습', icon: HiAcademicCap, color: '#BA68C8' },
-  { id: 'insight', label: '인사이트', icon: HiLightBulb, color: '#BA68C8' },
+  { id: 'JOB', label: '업무', icon: HiBriefcase, color: '#BA68C8' },
+  { id: 'STUDY', label: '학습', icon: HiAcademicCap, color: '#BA68C8' },
+  { id: 'INSIGHT', label: '인사이트', icon: HiLightBulb, color: '#BA68C8' },
   
   // 취미/여가 그룹 (그린 계열 - 더 쨍한 색)
-  { id: 'cooking', label: '요리', icon: HiCake, color: '#66BB6A' },
-  { id: 'hobby', label: '취미', icon: HiPuzzlePiece, color: '#66BB6A' },
+  { id: 'COOKING', label: '요리', icon: HiCake, color: '#66BB6A' },
+  { id: 'HOBBY', label: '취미', icon: HiPuzzlePiece, color: '#66BB6A' },
   
   // 기타
-  { id: 'etc', label: '기타', icon: HiFolder, color: '#BDBDBD' },
+  { id: 'ETC', label: '기타', icon: HiFolder, color: '#BDBDBD' },
 ]
 
 /**

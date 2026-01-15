@@ -5,9 +5,9 @@ import { getFile } from '@/services/file/file-service'
 
 // 원래 FileUploadModal에 있던 유틸 함수들
 function getFileTypeFromFile(file: File): FileType {
-  if (file.type.startsWith('image/')) return 'image'
-  if (file.type.startsWith('video/')) return 'image'
-  if (file.type.startsWith('audio/')) return 'image'
+  if (file.type.startsWith('image/')) return 'IMAGE_VIDEO'
+  if (file.type.startsWith('video/')) return 'IMAGE_VIDEO'
+  if (file.type.startsWith('audio/')) return 'IMAGE_VIDEO'
   
   if (
     file.type.includes('pdf') ||
@@ -17,10 +17,10 @@ function getFileTypeFromFile(file: File): FileType {
     file.type.includes('powerpoint') ||
     file.type.includes('text')
   ) {
-    return 'document'
+    return 'DOCUMENT'
   }
   
-  return 'etc'
+  return 'ETC'
 }
 
 function isImageFile(file: File): boolean {
@@ -41,13 +41,13 @@ function FileIconByType({ fileType, file }: { fileType: FileType; file?: File })
   }
   
   switch (fileType) {
-    case 'image':
+    case 'IMAGE_VIDEO':
       return <HiOutlinePhoto className={iconClass} />
-    case 'document':
+    case 'DOCUMENT':
       return <HiOutlineDocument className={iconClass} />
-    case 'link':
+    case 'LINK':
       return <HiOutlineLink className={iconClass} />
-    case 'text':
+    case 'TEXT':
       return <HiOutlineDocument className={iconClass} />
     default:
       return <HiOutlineFolder className={iconClass} />
@@ -104,7 +104,7 @@ export function FilePreview({ file, size = 'lg' }: FilePreviewProps) {
       } else {
         // FileItem - 이미지인 경우만 API 호출
         const fileItem = file as FileItem
-        if (fileItem.fileType === 'image') {
+        if (fileItem.fileType === 'IMAGE_VIDEO') {
           setIsLoading(true)
           try {
             const realFile = await getFile(fileItem.id.toString())

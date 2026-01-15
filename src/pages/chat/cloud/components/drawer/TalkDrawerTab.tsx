@@ -4,6 +4,7 @@ import { RecommendedCategoryCarousel } from '@/pages/chat/cloud/components/drawe
 import { RecentFilesSection } from '@/pages/chat/cloud/components/drawer/RecentFilesSection'
 import { useNavigate, useParams } from 'react-router'
 
+
 export function TalkDrawerTab() {
   const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
