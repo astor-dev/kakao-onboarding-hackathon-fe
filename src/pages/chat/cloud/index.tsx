@@ -1,12 +1,20 @@
 import { useState } from 'react'
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import { TalkDrawerTab } from '@/pages/chat/cloud/components/drawer/TalkDrawerTab'
 import { CloudHeader } from '@/pages/chat/cloud/components/CloudHeader'
 import PageWrapper from '@/components/PageWrapper'
 
 export function TalkDrawer() {
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
   const [searchQuery, setSearchQuery] = useState('')
+
+  const handleSearchSubmit = (query: string) => {
+    if (query.trim()) {
+      // 전체 파일에서 검색
+      navigate(`/chat/${id}/cloud/category/ALL?query=${encodeURIComponent(query)}`)
+    }
+  }
 
   return (
     <PageWrapper>
@@ -16,6 +24,7 @@ export function TalkDrawer() {
           backTo={`/chat/${id}`}
           searchValue={searchQuery}
           onSearchChange={setSearchQuery}
+          onSearchSubmit={handleSearchSubmit}
         />
 
         {/* 컨텐츠 */}

@@ -105,3 +105,30 @@ export const getFileList = async (category?: string, type?: string): Promise<Fil
   
   return response.data as FileResponse[]
 }
+
+/**
+ * 파일 검색 (벡터 유사도 검색)
+ * GET /file/search?query={query}&topK={topK}&similarityThreshold={threshold}&category={category}&type={type}
+ */
+export interface SearchFilesParams {
+  query: string
+  topK?: number
+  similarityThreshold?: number
+  category?: string
+  type?: string
+}
+
+export const searchFiles = async (params: SearchFilesParams): Promise<FileResponse[]> => {
+  const searchParams = new URLSearchParams()
+  searchParams.append('query', params.query)
+  if (params.topK !== undefined) searchParams.append('topK', params.topK.toString())
+  if (params.similarityThreshold !== undefined) searchParams.append('similarityThreshold', params.similarityThreshold.toString())
+  if (params.category) searchParams.append('category', params.category)
+  if (params.type) searchParams.append('type', params.type)
+  
+  const response = await instance.get(`/file/search?${searchParams.toString()}`, {
+    schema: z.array(FileResponseSchema),
+  })
+  
+  return response.data as FileResponse[]
+}

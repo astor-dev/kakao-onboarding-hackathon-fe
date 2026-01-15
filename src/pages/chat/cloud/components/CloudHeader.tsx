@@ -9,9 +9,10 @@ type CloudHeaderProps = {
   backTo: string
   searchValue?: string
   onSearchChange?: (value: string) => void
+  onSearchSubmit?: (query: string) => void
 }
 
-export function CloudHeader({ title, backTo, searchValue = '', onSearchChange }: CloudHeaderProps) {
+export function CloudHeader({ title, backTo, searchValue = '', onSearchChange, onSearchSubmit }: CloudHeaderProps) {
   const [isSearchMode, setIsSearchMode] = useState(false)
   const searchInputRef = useRef<HTMLInputElement>(null)
 
@@ -25,6 +26,19 @@ export function CloudHeader({ title, backTo, searchValue = '', onSearchChange }:
   const handleSearchClose = () => {
     setIsSearchMode(false)
     onSearchChange?.('')
+    onSearchSubmit?.('') // 쿼리스트링 제거
+  }
+
+  const handleSearchExecute = () => {
+    if (searchValue.trim()) {
+      onSearchSubmit?.(searchValue.trim())
+    }
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearchExecute()
+    }
   }
 
   return (
@@ -40,9 +54,17 @@ export function CloudHeader({ title, backTo, searchValue = '', onSearchChange }:
               placeholder="검색"
               value={searchValue}
               onChange={(e) => onSearchChange?.(e.target.value)}
+              onKeyDown={handleKeyDown}
               className="border-none bg-gray-100 focus-visible:ring-0"
             />
           </div>
+          <button 
+            onClick={handleSearchExecute} 
+            className="text-gray-600 hover:text-gray-800"
+            disabled={!searchValue.trim()}
+          >
+            <HiOutlineSearch className="w-5 h-5" />
+          </button>
         </>
       ) : (
         <>
