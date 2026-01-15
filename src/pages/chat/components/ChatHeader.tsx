@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback } from '@/components/ui/Avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
 import { Link, useParams } from 'react-router'
 import { HiOutlineSearch, HiOutlinePhone, HiOutlineVideoCamera, HiOutlineCloud } from 'react-icons/hi'
 import { FaArrowLeft } from 'react-icons/fa'
@@ -22,6 +22,8 @@ export function ChatHeader({ chatRoom }: ChatHeaderProps) {
         </Link>
         <div className="flex items-center gap-2">
           <Avatar className="w-8 h-8">
+            <AvatarImage src={chatRoom.avatar || undefined} 
+            style={{ backgroundColor: getPastelColor(chatRoom.name) }} />
             <AvatarFallback
               className="text-xs"
               style={{ backgroundColor: getPastelColor(chatRoom.name) }}

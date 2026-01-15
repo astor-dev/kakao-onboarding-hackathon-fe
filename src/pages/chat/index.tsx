@@ -10,6 +10,7 @@ import type { ChatRoom, Message } from '@/types/chat-room'
 import PageWrapper from '@/components/PageWrapper'
 import dayjs from '@/lib/dayjs'
 import { uploadFiles } from '@/services/file/file-service'
+import type { FileType } from '@/types/file'
 
 export function ChatRoom() {
   const { id } = useParams()
@@ -140,23 +141,31 @@ export function ChatRoom() {
     handleFileModalClose()
 
     // 각 파일마다 낙관적 업데이트로 메시지 생성
-    const fileMessages: Message[] = selectedFiles.map((file) => ({
-      id: `temp-file-${Date.now()}-${Math.random()}`,
-      roomId: id,
-      sender: '나',
-      content: '', // 파일 메시지는 content 비움
-      time: dayjs(),
-      isMe: true,
-      avatar: null,
-      type: 'DOCUMENT', // 임시, 실제로는 file type 판별
-      fileData: {
-        fileName: file.name,
-        fileSize: file.size,
-        fileType: file.type.startsWith('image/') ? 'IMAGE_VIDEO' : 'DOCUMENT',
-        expiryDate: dayjs().add(1, 'month'), // 1개월 후 만료
-        uploadStatus: 'pending',
-      },
-    }))
+    const fileMessages: Message[] = selectedFiles.map((file) => {
+      const isImage = file.type.startsWith('image/') || file.type.startsWith('video/')
+      const fileType: FileType = isImage ? 'IMAGE_VIDEO' : 'DOCUMENT'
+      
+      // 이미지/비디오면 blob URL 생성, 아니면 파일명 사용
+      const displayName = isImage ? URL.createObjectURL(file) : file.name
+      
+      return {
+        id: `temp-file-${Date.now()}-${Math.random()}`,
+        roomId: id,
+        sender: '나',
+        content: '', // 파일 메시지는 content 비움
+        time: dayjs(),
+        isMe: true,
+        avatar: null,
+        type: fileType,
+        fileData: {
+          fileName: displayName,
+          fileSize: file.size,
+          fileType,
+          expiryDate: dayjs().add(1, 'month'), // 1개월 후 만료
+          uploadStatus: 'pending',
+        },
+      }
+    })
 
     // UI에 즉시 추가
     setMessages((prev) => [...prev, ...fileMessages])

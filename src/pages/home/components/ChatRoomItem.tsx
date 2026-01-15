@@ -18,7 +18,8 @@ export function ChatRoomItem({ room }: ChatRoomItemProps) {
     >
       <div className="relative">
         <Avatar className="w-12 h-12">
-          <AvatarImage src={room.avatar || undefined} />
+          <AvatarImage src={room.avatar || undefined} 
+          style={{ backgroundColor: getPastelColor(room.name) }} />
           <AvatarFallback
             className="text-chat-text-primary"
             style={{ backgroundColor }}
