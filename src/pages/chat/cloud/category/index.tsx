@@ -15,15 +15,16 @@ export function CategoryPage() {
   const [files, setFiles] = useState<FileItem[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
-  // 카테고리 이름 가져오기 (실제로는 categoryId로 조회)
-  const categoryName = '카카오' // TODO: categoryId로 실제 카테고리 이름 조회
+  // 카테고리 이름 가져오기
+  const categoryName = categoryId === 'all' ? '전체 파일' : '카카오' // TODO: categoryId로 실제 카테고리 이름 조회
 
   // 파일 리스트 조회
   useEffect(() => {
     const fetchFiles = async () => {
       try {
         setIsLoading(true)
-        const response = await getFileList(categoryId)
+        // 'all'이면 카테고리 필터 없이 전체 조회
+        const response = await getFileList(categoryId === 'all' ? undefined : categoryId)
         const mappedFiles = mapFileResponsesToFileItems(response)
         setFiles(mappedFiles)
       } catch (error) {
