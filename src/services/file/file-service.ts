@@ -1,7 +1,8 @@
 import { instance, BASE_URL } from '@/services/core/http-instance'
-import type { UploadFileRequest } from '@/services/file/file-dto'
-import { UploadFileResponseSchema } from '@/services/file/file-dto'
+import type { UploadFileRequest, FileResponse } from '@/services/file/file-dto'
+import { FileResponseSchema } from '@/services/file/file-dto'
 import axios from 'axios'
+import z from 'zod'
 
 /**
  * 파일 업로드
@@ -16,7 +17,7 @@ export const uploadFile = async (request: UploadFileRequest) => {
     '/file',
     formData,
     {
-      schema: UploadFileResponseSchema,
+      schema: FileResponseSchema,
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -70,3 +71,21 @@ export const getFile = async (fileId: string): Promise<File | null> => {
   }
 }
 
+
+/**
+ * 파일 리스트 조회
+ * GET /file?category={category}&type={type}
+ */
+export const getFileList = async (category?: string, type?: string): Promise<FileResponse[]> => {
+  const params = new URLSearchParams()
+  if (category) params.append('category', category)
+  if (type) params.append('type', type)
+  
+  const queryString = params.toString() ? `?${params.toString()}` : ''
+  
+  const response = await instance.get(`/file${queryString}`, {
+    schema: z.array(FileResponseSchema),
+  })
+  
+  return response.data as FileResponse[]
+}

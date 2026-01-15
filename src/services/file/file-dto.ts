@@ -4,12 +4,25 @@ export type UploadFileRequest = {
     file: File;
 };
 
-export const UploadFileResponseSchema = z.object({
+export const TagResponseSchema = z.object({
+    id: z.number(),
+    description: z.string(),
     createdAt: z.string(),
     modifiedAt: z.string().nullable(),
-    id: z.number(),
-    fileOverview: z.string(),
-    category: z.array(z.string()),
 });
 
-export type UploadFileResponse = z.infer<typeof UploadFileResponseSchema>;
+export type TagResponse = z.infer<typeof TagResponseSchema>;
+
+export const FileResponseSchema = z.object({
+    id: z.number(),
+    categories: z.array(z.string()),
+    fileType: z.string(), //TODO: file type enum backend와 맞추기
+    fileOverview: z.string(),
+    originalFileName: z.string(),
+    savedFileName: z.string(),
+    tags: z.array(TagResponseSchema),
+    createdAt: z.string(),
+    modifiedAt: z.string().nullable(),
+});
+
+export type FileResponse = z.infer<typeof FileResponseSchema>;
