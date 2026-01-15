@@ -1,7 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
 import { getPastelColor } from '@/lib/background'
-import type { Message } from '@/types/chat-room'
+import type { Message, FileMessageData } from '@/types/chat-room'
 import { FileMessage } from './FileMessage'
+import dayjs from '@/lib/dayjs'
 
 type MessageItemProps = {
   message: Message
@@ -10,7 +11,52 @@ type MessageItemProps = {
 }
 
 export function MessageItem({ message, showSenderInfo, showTimeInfo }: MessageItemProps) {
-  const isFileMessage = message.fileData !== undefined
+  // TEXT 타입이 아니면 FileMessage로 표시
+  const isFileMessage = message.type !== 'TEXT'
+  
+  // content를 기반으로 fileData 생성 (모킹)
+  const generateFileData = (): FileMessageData => {
+    if (message.fileData) {
+      return message.fileData
+    }
+    
+    // content를 기반으로 fileData 생성
+    const content = message.content || ''
+    
+    // message.id를 기반으로 일관된 파일 크기 생성
+    const hashCode = message.id.split('').reduce((acc, char) => {
+      return acc + char.charCodeAt(0)
+    }, 0)
+    
+    if (message.type === 'IMAGE_VIDEO') {
+      // IMAGE_VIDEO 타입: content가 URL이라고 가정
+      return {
+        fileName: content,
+        fileSize: 1000000 + (hashCode % 5000000), // 1MB~6MB
+        fileType: 'IMAGE_VIDEO',
+        uploadStatus: 'success',
+      }
+    }
+    
+    if (message.type === 'DOCUMENT') {
+      // DOCUMENT 타입: content가 파일명이라고 가정
+      return {
+        fileName: content || 'document.pdf',
+        fileSize: 500000 + (hashCode % 10000000), // 0.5MB~10MB
+        fileType: 'DOCUMENT',
+        expiryDate: dayjs().add(30, 'day'),
+        uploadStatus: 'success',
+      }
+    }
+    
+    // 기본값
+    return {
+      fileName: content || 'file',
+      fileSize: 1024000,
+      fileType: message.type,
+      uploadStatus: 'success',
+    }
+  }
 
   return (
     <div className={`flex gap-2 ${message.isMe ? 'justify-end' : ''}`}>
@@ -40,7 +86,7 @@ export function MessageItem({ message, showSenderInfo, showTimeInfo }: MessageIt
         <div className={`flex items-end gap-1 ${message.isMe ? 'flex-row-reverse' : 'flex-row'}`}>
           {isFileMessage ? (
             <FileMessage 
-              fileData={message.fileData!} 
+              fileData={generateFileData()} 
               isMe={message.isMe} 
               time={message.time}
               showTimeInfo={showTimeInfo}
