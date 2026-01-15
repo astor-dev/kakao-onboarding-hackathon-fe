@@ -24,9 +24,16 @@ export function FileMessage({ fileData, isMe, time, showTimeInfo }: FileMessageP
       <div className="w-[280px] rounded-2xl p-4 bg-white border border-gray-200">
         <div className="flex flex-col gap-1">
           {/* 파일명 */}
-          <h3 className="text-sm font-medium text-gray-900 wrap-break-words">
+          <h3 className="text-sm font-medium text-gray-900 break-all">
             {fileName}
           </h3>
+
+          {/* 에러 메시지 */}
+          {uploadStatus === 'error' && (
+            <p className="text-xs text-red-600">
+              지원하지 않는 파일 형식입니다.
+            </p>
+          )}
 
           {/* 유효기간 */}
           {expiryDate && (
@@ -49,25 +56,21 @@ export function FileMessage({ fileData, isMe, time, showTimeInfo }: FileMessageP
         </div>
       </div>
 
-      {/* 시간 또는 상태 아이콘 */}
-      {showTimeInfo && (
-        <>
-          {uploadStatus === 'pending' && (
-            <div className="flex items-center justify-center p-1 bg-gray-100/50 rounded-lg mb-1">
-              <HiOutlineClock className="w-3 h-3 text-gray-500 animate-pulse" />
-            </div>
-          )}
-          {uploadStatus === 'error' && (
-            <div className="flex items-center justify-center p-1 bg-gray-100/50 rounded-lg mb-1">
-              <HiOutlineX className="w-3 h-3 text-red-600" />
-            </div>
-          )}
-          {uploadStatus === 'success' && (
-            <span className="text-xs text-black whitespace-nowrap">
-              {time.format('A h:mm')}
-            </span>
-          )}
-        </>
+      {/* 상태 아이콘 (항상 표시) 또는 시간 (success일 때만 showTimeInfo에 따라) */}
+      {uploadStatus === 'pending' && (
+        <div className="flex items-center justify-center p-1 bg-gray-100/50 rounded-lg mb-1">
+          <HiOutlineClock className="w-3 h-3 text-gray-500 animate-pulse" />
+        </div>
+      )}
+      {uploadStatus === 'error' && (
+        <div className="flex items-center justify-center p-1 bg-gray-100/50 rounded-lg mb-1">
+          <HiOutlineX className="w-3 h-3 text-red-600" />
+        </div>
+      )}
+      {uploadStatus === 'success' && showTimeInfo && (
+        <span className="text-xs text-black whitespace-nowrap">
+          {time.format('A h:mm')}
+        </span>
       )}
     </div>
   )
