@@ -19,7 +19,7 @@ export function TalkDrawerTab() {
         {/* AI 추천 카테고리 섹션 */}
         <div className="my-4">
           <div className="px-4 mb-4">
-            <h2 className="text-base font-semibold text-gray-900 flex items-center gap-2">
+            <h2 className="text-sm font-semibold text-gray-900 flex items-center gap-2">
             <IoSparkles className="w-5 h-5 text-kanana-main" />
               AI 추천 카테고리
             </h2>

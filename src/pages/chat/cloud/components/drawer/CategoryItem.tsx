@@ -14,13 +14,11 @@ export function CategoryItem({ category, onClick }: CategoryItemProps) {
     <Button
       variant="ghost"
       onClick={onClick}
-      className="w-full flex items-center justify-between px-4 py-3 h-auto rounded-none hover:bg-gray-50"
+      className="w-full flex items-center justify-between px-4! py-3 rounded-none hover:bg-gray-50 h-auto"
     >
-      <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-          <Icon className="w-5 h-5 text-gray-600" />
-        </div>
-        <span className="text-base text-gray-900 font-normal">{category.label}</span>
+      <div className="flex items-center gap-2">
+        <Icon className="w-5 h-5 text-gray-600" />
+        <span className="text-sm text-gray-900 font-normal">{category.label}</span>
       </div>
       <HiChevronRight className="w-5 h-5 text-gray-400" />
     </Button>
