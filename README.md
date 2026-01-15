@@ -1,3 +1,3 @@
 ## Backend Repository
 
-https://github.com/One-Kakao-Onboarding/22j-fe
+https://github.com/One-Kakao-Onboarding/22j-be
