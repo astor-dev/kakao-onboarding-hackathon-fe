@@ -42,10 +42,6 @@ export function ExploreTab() {
     return false
   })
 
-  const handleFileClick = (fileId: number) => {
-    console.log('File clicked:', fileId)
-  }
-
   const handleFilterChange = (filter: FileType | 'all' | 'media' | 'file') => {
     setSelectedFilter(filter as FilterType)
   }
@@ -55,7 +51,7 @@ export function ExploreTab() {
       <FileTypeFilters selected={selectedFilter} onSelect={handleFilterChange} />
       
       <div className="flex-1 overflow-y-auto">
-        <FileGroupedList files={filteredFiles} onFileClick={handleFileClick} />
+        <FileGroupedList files={filteredFiles} />
       </div>
     </TabsContent>
   )

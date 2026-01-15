@@ -67,11 +67,6 @@ export function CategoryPage() {
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
   }
 
-  const handleFileClick = (fileId: number) => {
-    // TODO: 파일 상세보기 또는 다운로드
-    console.log('File clicked:', fileId)
-  }
-
   const handleFilterChange = (filter: FileType | 'all' | 'media' | 'file') => {
     // media와 file은 실제 FileType으로 변환
     if (filter === 'media') {
@@ -96,7 +91,7 @@ export function CategoryPage() {
 
         {/* 파일 리스트 (날짜별 그룹) */}
         <div className="flex-1 overflow-y-auto">
-          <FileGroupedList files={filteredFiles} onFileClick={handleFileClick} />
+          <FileGroupedList files={filteredFiles} />
         </div>
       </div>
     </PageWrapper>

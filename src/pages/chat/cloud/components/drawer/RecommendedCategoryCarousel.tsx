@@ -18,11 +18,11 @@ export function RecommendedCategoryCarousel({ onCategoryClick }: RecommendedCate
           align: 'start',
           loop: false,
         }}
-        className="w-full"
+        className="w-[calc(100%+32px)] -mx-4"
       >
-        <CarouselContent className="-ml-2">
+        <CarouselContent className="pl-4">
           {RECOMMENDED_CATEGORIES.map((category) => (
-            <CarouselItem key={category.id} className="pl-2 basis-auto">
+            <CarouselItem key={category.id} className="pl-4 basis-auto">
               <RecommendedCategoryCard
                 category={category}
                 onClick={() => onCategoryClick?.(category.id)}

@@ -52,17 +52,33 @@ export const getFile = async (fileId: string): Promise<File | null> => {
     // Blob을 File 객체로 변환
     const blob = response.data as Blob
     
-    // Content-Disposition 헤더에서 파일명 추출
+    // Content-Disposition 헤더에서 파일명 추출 (한글 인코딩 처리)
     const contentDisposition = response.headers['content-disposition']
     let fileName = `file-${fileId}`
+    
     if (contentDisposition) {
-      const matches = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/.exec(contentDisposition)
-      if (matches && matches[1]) {
-        fileName = matches[1].replace(/['"]/g, '')
+      // filename*=UTF-8''encoded-name 형식 우선 처리 (RFC 5987)
+      const utf8Match = /filename\*=UTF-8''([^;]+)/.exec(contentDisposition)
+      if (utf8Match && utf8Match[1]) {
+        fileName = decodeURIComponent(utf8Match[1])
+      } else {
+        // 일반 filename="name" 형식
+        const matches = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/.exec(contentDisposition)
+        if (matches && matches[1]) {
+          fileName = decodeURIComponent(matches[1].replace(/['"]/g, ''))
+        }
       }
     }
     
-    const file = new File([blob], fileName, { type: blob.type })
+    // 텍스트/마크다운 파일인 경우 UTF-8 인코딩 확인
+    let finalBlob = blob
+    if (blob.type.includes('text') || blob.type.includes('markdown')) {
+      // Blob을 텍스트로 읽어서 UTF-8로 다시 생성
+      const text = await blob.text()
+      finalBlob = new Blob([text], { type: `${blob.type}; charset=utf-8` })
+    }
+    
+    const file = new File([finalBlob], fileName, { type: finalBlob.type })
     return file
 
   } catch (error) {

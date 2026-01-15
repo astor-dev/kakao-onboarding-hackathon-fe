@@ -16,7 +16,7 @@ export type TagResponse = z.infer<typeof TagResponseSchema>;
 export const FileResponseSchema = z.object({
     id: z.number(),
     categories: z.array(z.string()),
-    fileType: z.string(), //TODO: file type enum backend와 맞추기
+    fileType: z.string().nullable(), //TODO: file type enum backend와 맞추기
     fileOverview: z.string(),
     originalFileName: z.string(),
     savedFileName: z.string(),

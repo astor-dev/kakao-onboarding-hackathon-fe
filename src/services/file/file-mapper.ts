@@ -1,4 +1,4 @@
-import type { FileResponse, TagResponse } from '@/services/file/file-dto'
+import type { FileResponse } from '@/services/file/file-dto'
 import type { FileItem, FileType } from '@/types/file'
 import dayjs from '@/lib/dayjs'
 
@@ -35,7 +35,11 @@ export function mapFileResponsesToFileItems(responses: FileResponse[]): FileItem
  * 백엔드 파일 타입을 프론트엔드 FileType으로 매핑
  * TODO: 백엔드 enum과 맞추기
  */
-function mapBackendFileTypeToFrontend(backendType: string): FileType {
+function mapBackendFileTypeToFrontend(backendType: string | null | undefined): FileType {
+  if (!backendType) {
+    return 'etc'
+  }
+  
   const normalizedType = backendType.toLowerCase()
   
   if (normalizedType.includes('image') || normalizedType.includes('photo')) {

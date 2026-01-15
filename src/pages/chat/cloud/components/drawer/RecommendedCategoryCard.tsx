@@ -12,7 +12,7 @@ export function RecommendedCategoryCard({ category, onClick }: RecommendedCatego
   return (
     <button
       onClick={onClick}
-      className="shrink-0 p-1 flex flex-col items-center gap-3 cursor-pointer group"
+      className="shrink-0 flex flex-col items-center gap-3 cursor-pointer group"
     >
       <div 
         className="w-16 h-16 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105"

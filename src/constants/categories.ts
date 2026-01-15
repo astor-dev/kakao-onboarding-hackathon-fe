@@ -11,11 +11,10 @@ export type Category = {
 /**
  * 추천 카테고리
  * - 빈번도 높은 카테고리
- * - 계정 모아보기
  */
 export const RECOMMENDED_CATEGORIES: Category[] = [
-  { id: 'all-accounts', label: '계정 모아보기', icon: HiOutlineStar, isRecommended: true },
   { id: 'recent-activity', label: '최근 활동', icon: HiOutlineRocketLaunch, isRecommended: true },
+  { id: 'all-accounts', label: '개인정보', icon: HiOutlineStar, isRecommended: true },
   { id: 'ideas', label: '여행', icon: HiOutlineLightBulb, isRecommended: true },
   { id: 'files', label: '일상', icon: HiOutlineFolder, isRecommended: true },
   { id: 'documents', label: '게임', icon: HiOutlineDocument, isRecommended: true },

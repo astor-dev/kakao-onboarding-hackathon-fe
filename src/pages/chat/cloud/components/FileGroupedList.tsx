@@ -6,10 +6,9 @@ import dayjs from '@/lib/dayjs'
 
 type FileGroupedListProps = {
   files: FileItem[]
-  onFileClick?: (fileId: number) => void
 }
 
-export function FileGroupedList({ files, onFileClick }: FileGroupedListProps) {
+export function FileGroupedList({ files }: FileGroupedListProps) {
   // 날짜별로 그룹핑
   const groupedFiles = useMemo(() => {
     const groups = new Map<string, FileItem[]>()
@@ -48,7 +47,6 @@ export function FileGroupedList({ files, onFileClick }: FileGroupedListProps) {
             <FileListItem
               key={file.id}
               file={file}
-              onClick={() => onFileClick?.(file.id)}
             />
           ))}
         </div>
